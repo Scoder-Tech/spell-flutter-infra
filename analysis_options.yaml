@@ -1,4 +1,21 @@
 include: package:flutter_lints/flutter.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    prefer_single_quotes: true
+    avoid_dynamic_calls: true
+    prefer_relative_imports: true
+    always_declare_return_types: true
+    avoid_function_literals_in_foreach_calls: true
+    avoid_void_async: true
+    file_names: true
+    library_prefixes: true
+    prefer_const_declarations: true
+    sized_box_for_whitespace: true
+    sort_child_properties_last: true
+    unnecessary_final: true
+    cascade_invocations: true
+    unnecessary_late: true
+    use_colored_box: true
+    use_decorated_box: true
+    library_private_types_in_public_api: false 
