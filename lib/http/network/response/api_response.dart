@@ -13,6 +13,7 @@ class ApiResponse {
     if (json is List) {
       return ApiResponse(
         list: json,
+        errors: json,
       );
     } else if (json is Map) {
       return ApiResponse(

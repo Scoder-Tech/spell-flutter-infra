@@ -8,17 +8,14 @@ extension FutureExtension on Future<Response> {
   ) async {
     try {
       var response = await this;
-
       var res = ApiResponse.fromJson(response.data);
 
-      if (res.errors?.error == null ||
-          res.errors?.friendlyMessage == null ||
-          res.errors?.statusCode == null) {
+      if ((response.statusCode ?? 0) > 299) {
         return Result.success(onValue(res.data ?? {}));
       }
 
       logger.e(
-        '[ERROR] ${res.errors!.friendlyMessage}'
+        '[ERROR] ${res.errors}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${response.requestOptions.uri.toString()}'
@@ -27,7 +24,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${response.requestOptions.data}',
       );
 
-      return Result.error(Failure.dataFailure(res.errors!));
+      return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
         '[ERROR] ${e.message}'
@@ -39,7 +36,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${e.requestOptions.data}',
       );
 
-      return Result.error(Failure.dioFailure(e));
+      return Result.error(Failure.failure(e));
     } on TypeError catch (e) {
       logger.e(
         '[ERROR] ${e.toString()}'
@@ -47,7 +44,7 @@ extension FutureExtension on Future<Response> {
         '|| [WHERE] : ${e.stackTrace}',
       );
 
-      return Result.error(Failure.unknownFailure(e));
+      return Result.error(Failure.failure(e));
     }
   }
 
@@ -58,15 +55,12 @@ extension FutureExtension on Future<Response> {
       var response = await this;
 
       var res = ApiResponse.fromJson(response.data);
-
-      if (res.errors?.error == null ||
-          res.errors?.friendlyMessage == null ||
-          res.errors?.statusCode == null) {
+      if ((response.statusCode ?? 0) > 299) {
         return Result.success(onValue(response.data));
       }
 
       logger.e(
-        '[ERROR] ${res.errors!.friendlyMessage}'
+        '[ERROR] ${res.errors}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${response.requestOptions.uri.toString()}'
@@ -75,7 +69,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${response.requestOptions.data}',
       );
 
-      return Result.error(Failure.dataFailure(res.errors!));
+      return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
         '[ERROR] ${e.message}'
@@ -87,7 +81,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${e.requestOptions.data}',
       );
 
-      return Result.error(Failure.dioFailure(e));
+      return Result.error(Failure.failure(e));
     } on TypeError catch (e) {
       logger.e(
         '[ERROR] ${e.toString()}'
@@ -95,7 +89,7 @@ extension FutureExtension on Future<Response> {
         '|| [WHERE] : ${e.stackTrace}',
       );
 
-      return Result.error(Failure.unknownFailure(e));
+      return Result.error(Failure.failure(e));
     }
   }
 
@@ -106,14 +100,12 @@ extension FutureExtension on Future<Response> {
       var response = await this;
       var res = ApiResponse.fromJson(response.data);
 
-      if (res.errors?.error == null ||
-          res.errors?.friendlyMessage == null ||
-          res.errors?.statusCode == null) {
+      if ((response.statusCode ?? 0) > 299) {
         return Result.success(onValue(res.list!));
       }
 
       logger.e(
-        '[ERROR] ${res.errors!.friendlyMessage}'
+        '[ERROR] ${res.errors}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> resultList<R>'
         '|| [WHERE] : ${response.requestOptions.uri.toString()}'
@@ -122,7 +114,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${response.requestOptions.data}',
       );
 
-      return Result.error(Failure.dataFailure(res.errors!));
+      return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
         '[ERROR] ${e.message}'
@@ -134,7 +126,7 @@ extension FutureExtension on Future<Response> {
         '|| [DATA] : ${e.requestOptions.data}',
       );
 
-      return Result.error(Failure.dioFailure(e));
+      return Result.error(Failure.failure(e));
     } on TypeError catch (e) {
       logger.e(
         '[ERROR] ${e.toString()}'
@@ -142,7 +134,7 @@ extension FutureExtension on Future<Response> {
         '|| [WHERE] : ${e.stackTrace}',
       );
 
-      return Result.error(Failure.unknownFailure(e));
+      return Result.error(Failure.failure(e));
     }
   }
 }
