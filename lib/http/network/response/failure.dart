@@ -1,17 +1,15 @@
 import 'package:dio/dio.dart';
 
-import '../network.dart';
-
 abstract class Failure {
   Failure._();
 
   factory Failure.dioFailure(DioException error) = DioFailure;
-  factory Failure.dataFailure(ErrorResponse error) = DataFailure;
+  factory Failure.dataFailure(dynamic error) = DataFailure;
   factory Failure.unknownFailure(TypeError error) = UnknownFailure;
 
   String get code;
 
-  ErrorResponse get message;
+  dynamic get message;
 
   dynamic get response;
 }
@@ -25,7 +23,7 @@ class DioFailure extends Failure {
   String get code => error.response?.statusCode.toString() ?? '';
 
   @override
-  ErrorResponse get message => ErrorResponse.fromJson(error.response?.data);
+  dynamic get message => error;
 
   @override
   dynamic get response => error.response;
@@ -34,20 +32,16 @@ class DioFailure extends Failure {
 class DataFailure extends Failure {
   DataFailure(this.error) : super._();
 
-  final ErrorResponse error;
+  final dynamic error;
 
   @override
-  String get code => error.friendlyMessage ?? '';
+  String get code => error;
 
   @override
-  ErrorResponse get message => ErrorResponse(
-        friendlyMessage: error.friendlyMessage,
-        error: error.error,
-        statusCode: error.statusCode,
-      );
+  dynamic get message => error;
 
   @override
-  dynamic get response => error.friendlyMessage;
+  dynamic get response => error;
 }
 
 class UnknownFailure extends Failure {
@@ -59,9 +53,7 @@ class UnknownFailure extends Failure {
   String get code => error.hashCode.toString();
 
   @override
-  ErrorResponse get message => ErrorResponse(
-        friendlyMessage: error.toString(),
-      );
+  dynamic get message => error;
 
   @override
   dynamic get response => error;
