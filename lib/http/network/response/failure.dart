@@ -1,14 +1,9 @@
-import 'package:dio/dio.dart';
-
 abstract class Failure {
   Failure._();
 
   factory Failure.failure(dynamic error) = DataFailure;
 
   String get code;
-
-  dynamic get message;
-
   dynamic get response;
 }
 
@@ -21,8 +16,5 @@ class DataFailure extends Failure {
   String get code => error;
 
   @override
-  dynamic get message => error;
-
-  @override
-  DioException get response => error;
+  dynamic get response => error;
 }

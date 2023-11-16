@@ -18,7 +18,7 @@ class ApiResponse {
     } else if (json is Map) {
       return ApiResponse(
         data: Map<String, dynamic>.from(json),
-        errors: json,
+        errors: Map<String, dynamic>.from(json),
       );
     } else {
       return ApiResponse(data: {});

@@ -10,7 +10,7 @@ extension FutureExtension on Future<Response> {
       var response = await this;
       var res = ApiResponse.fromJson(response.data);
 
-      if ((response.statusCode ?? 0) > 299) {
+      if ((response.statusCode ?? 0) < 299) {
         return Result.success(onValue(res.data ?? {}));
       }
 
@@ -27,7 +27,7 @@ extension FutureExtension on Future<Response> {
       return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
-        '[ERROR] ${e.message}'
+        '[ERROR] ${e.toString()}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${e.requestOptions.uri.toString()}'
@@ -72,7 +72,7 @@ extension FutureExtension on Future<Response> {
       return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
-        '[ERROR] ${e.message}'
+        '[ERROR] ${e.toString()}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${e.requestOptions.uri.toString()}'
@@ -117,7 +117,7 @@ extension FutureExtension on Future<Response> {
       return Result.error(Failure.failure(res.errors!));
     } on DioException catch (e) {
       logger.e(
-        '[ERROR] ${e.message}'
+        '[ERROR] ${e.toString()}'
         '|| [ERROR TYPE] : Failure.dioFailure'
         '|| [FUTURE METHOD] : Future<Result<R>> resultList<R>'
         '|| [WHERE] : ${e.requestOptions.uri.toString()}'
