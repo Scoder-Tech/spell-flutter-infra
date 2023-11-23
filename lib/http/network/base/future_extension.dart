@@ -55,7 +55,7 @@ extension FutureExtension on Future<Response> {
       var response = await this;
 
       var res = ApiResponse.fromJson(response.data);
-      if ((response.statusCode ?? 0) > 299) {
+      if ((response.statusCode ?? 0) < 299) {
         return Result.success(onValue(response.data));
       }
 
@@ -99,9 +99,8 @@ extension FutureExtension on Future<Response> {
     try {
       var response = await this;
       var res = ApiResponse.fromJson(response.data);
-
-      if ((response.statusCode ?? 0) > 299) {
-        return Result.success(onValue(res.list!));
+      if ((response.statusCode ?? 0) < 299) {
+        return Result.success(onValue(res.list ?? []));
       }
 
       logger.e(
