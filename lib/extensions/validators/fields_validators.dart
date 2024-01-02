@@ -53,7 +53,7 @@ abstract class Validators {
 
   /// Validar quantidade [minima] de caracteres no campo
   /// Validators.min(4, 'Mínimo 4 caracteres')
-  static FormFieldValidator<String> min(int min, String messageKey) {
+  static FormFieldValidator<String> min(num min, String messageKey) {
     return (value) {
       if (value?.isEmpty ?? true) return null;
       if ((value?.length ?? 0) < min) return messageKey;
@@ -63,7 +63,7 @@ abstract class Validators {
 
   /// Validar quantidade [maxima] de caracteres no campo
   /// Validators.min(4, 'Máximo 4 caracteres')
-  static FormFieldValidator<String> max(int max, String messageKey) {
+  static FormFieldValidator<String> max(num max, String messageKey) {
     return (value) {
       if (value?.isEmpty ?? true) return null;
       if ((value?.length ?? 0) > max) return messageKey;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FormFactor {
-  static double desktop = 950;
+  static double desktop = 768;
   static double mobile = 600;
   static double handset = 300;
 }

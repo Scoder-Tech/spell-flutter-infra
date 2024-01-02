@@ -20,3 +20,18 @@ extension DateParsing on DateTime {
     return DateTime.parse(outputDateFormat.format(dateTime));
   }
 }
+
+extension DateStringParsing on String {
+  DateTime formatStringToDate(String outputFormat) {
+    DateTime dateTime = DateTime.parse(toString());
+    DateFormat outputDateFormat = DateFormat(outputFormat);
+    return DateTime.parse(outputDateFormat.format(dateTime));
+  }
+
+  DateTime formatStringDateToDate(String inputFormat, String outputFormat) {
+    DateFormat inputDateFormat = DateFormat(inputFormat);
+    DateTime dateTime = inputDateFormat.parse(toString());
+    DateFormat outputDateFormat = DateFormat(outputFormat);
+    return DateTime.parse(outputDateFormat.format(dateTime));
+  }
+}
