@@ -115,7 +115,7 @@ abstract class Validators {
   static FormFieldValidator<String> cpf(String messageKey) {
     return (value) {
       if (value?.isEmpty ?? true) return null;
-      if (_CpfValidator.isValid(value!)) {
+      if (CpfValidator.isValid(value!)) {
         return null;
       } else {
         return messageKey;
@@ -185,7 +185,7 @@ abstract class Validators {
   }
 }
 
-class _CpfValidator {
+class CpfValidator {
   static const stripRegex = r'[^\d]';
   static int _verifierDigit(String cpf) {
     List<int> numbers =
