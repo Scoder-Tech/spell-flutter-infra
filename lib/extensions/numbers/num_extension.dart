@@ -22,3 +22,10 @@ extension NumberFormatExtension on num {
     return milharDotsFormatter.format(this);
   }
 }
+
+extension NumberFormatExtensionNum on num? {
+  String formatWithThousandsSeparator() {
+    var milharDotsFormatter = NumberFormat('#,##0.00', 'pt_BR');
+    return milharDotsFormatter.format(this);
+  }
+}
