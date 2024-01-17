@@ -21,7 +21,7 @@ abstract class Validators {
   static FormFieldValidator<String> phone(String messageKey) {
     return (value) {
       if (value?.isEmpty ?? true) return null;
-      var reg = RegExp(r'^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$');
+      var reg = RegExp(r'^\(\d{2}\)\d{5}\-\d{4}$');
       if (reg.hasMatch(value!)) return null;
       return messageKey;
     };
