@@ -6,6 +6,11 @@ extension DateParsing on DateTime {
     return outputDateFormat.format(this.toLocal());
   }
 
+  String dateTimeToStringUTC(String outputFormat) {
+    DateFormat outputDateFormat = DateFormat(outputFormat);
+    return outputDateFormat.format(this);
+  }
+
   String formatDate(String inputFormat, String outputFormat) {
     DateFormat inputDateFormat = DateFormat(inputFormat);
     DateTime dateTime = inputDateFormat.parse(toString());

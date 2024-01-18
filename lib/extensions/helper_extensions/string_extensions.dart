@@ -3,7 +3,7 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:localization/localization.dart';
 
 extension StringExtension on String {
-  Color? toColor() {
+  Color toColor() {
     var buffer = StringBuffer();
     if (length == 6 || length == 7) buffer.write('ff');
     buffer.write(replaceFirst('#', ''));
