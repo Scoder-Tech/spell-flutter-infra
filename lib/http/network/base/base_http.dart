@@ -9,8 +9,8 @@ abstract class BaseHttp {
   BaseHttp({required this.baseUrl}) {
     dio = Dio();
     dio.options = BaseOptions(
-      connectTimeout: const Duration(milliseconds: 30000),
-      receiveTimeout: const Duration(milliseconds: 30000),
+      connectTimeout: const Duration(milliseconds: 60000),
+      receiveTimeout: const Duration(milliseconds: 60000),
       headers: {
         'Content-Type': 'application/json',
       },
