@@ -21,8 +21,11 @@ abstract class Validators {
   static FormFieldValidator<String> phone(String messageKey) {
     return (value) {
       if (value?.isEmpty ?? true) return null;
-      var reg = RegExp(r'^\(\d{2}\)\d{5}\-\d{4}$');
-      if (reg.hasMatch(value!)) return null;
+      RegExp digitsRegex = RegExp(r'^\d{10,11}$');
+
+      var newValue = value?.replaceAll(new RegExp(r'[^0-9]'), '');
+
+      if (digitsRegex.hasMatch(newValue!)) return null;
       return messageKey;
     };
   }
