@@ -1,6 +1,7 @@
 name: flutter_infra_scoder
 description: A package for infrastructure to use in flutter projects
 version: 0.0.1
+publish_to: "none"
 homepage:
 
 environment:
