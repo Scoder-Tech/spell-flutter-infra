@@ -17,6 +17,16 @@ const List<String> _blockList = [
 abstract class Validators {
   Validators._();
 
+  ///validar espaçço eaail
+  static FormFieldValidator<String> spaceEmail(String messageKey) {
+    return (value) {
+      if (value?.isEmpty ?? true) return null;
+      var emailRegex = RegExp(r"^\S+@\S+\.\S+$");
+      if (emailRegex.hasMatch(value!)) return null;
+      return messageKey;
+    };
+  }
+
   /// Validar um campo de telefone
   static FormFieldValidator<String> phone(String messageKey) {
     return (value) {
