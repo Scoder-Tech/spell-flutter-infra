@@ -33,6 +33,15 @@ extension DateStringParsing on String {
     return DateTime.parse(outputDateFormat.format(dateTime));
   }
 
+  DateTime parseString() {
+    List<String> dateParts = split('-');
+
+    int year = int.parse(dateParts[0]);
+    int month = int.parse(dateParts[1]);
+    int day = int.parse(dateParts[2]);
+    return DateTime(year, month, day);
+  }
+
   DateTime formatStringDateToDate(String inputFormat, String outputFormat) {
     DateFormat inputDateFormat = DateFormat(inputFormat);
     DateTime dateTime = inputDateFormat.parse(toString());
