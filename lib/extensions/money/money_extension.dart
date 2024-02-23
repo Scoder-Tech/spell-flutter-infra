@@ -3,7 +3,32 @@ import 'package:money2/money2.dart';
 
 extension MoneyToString on num {
   String toBRL() {
-    return Money.fromNum(this, code: 'BRL').toString();
+    var parsedValue = Money.fromNum(this, code: 'BRL').toString();
+
+  String value = parsedValue.substring(2);
+  
+  List<String> parts = value.split(',');
+  
+  String integerPart = parts[0];
+  String formattedInteger = '';
+  for (int i = 0; i < integerPart.length; i++) {
+    if ((integerPart.length - i) % 3 == 0 && i != 0) {
+      formattedInteger += '.';
+    }
+    formattedInteger += integerPart[i];
+  }
+
+  String formattedValue = 'R\$' + formattedInteger;
+  if (parts.length > 1) {
+    formattedValue += ',${parts[1]}';
+  }
+
+
+    return formattedValue;
+  }
+
+  String toPercentage() {
+    return '${(this * 100).toStringAsFixed(2)}%';
   }
 
   String formatNumberWithMilharDots() {
