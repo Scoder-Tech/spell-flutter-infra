@@ -36,13 +36,13 @@ extension MoneyToString on num {
     return milharDotsFormatter.format(this);
   }
 
-   String toAbbreviatedString() {
+        String toAbbreviatedString() {
     if (this >= 1000000) {
-      return '${(this / 1000000).toStringAsFixed(1)}mi';
+      return 'R\$ ${(this / 1000000)}mi';
     } else if (this >= 1000) {
-      return '${(this / 1000).toStringAsFixed(1)}k';
+      return 'R\$ ${(this / 1000)}k';
     } else {
-      return '$this';
+      return 'R\$ ${this.toStringAsFixed(2).replaceAll('.', ',')}';
     }
   }
 }
