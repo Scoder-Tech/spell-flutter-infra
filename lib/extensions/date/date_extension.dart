@@ -33,7 +33,7 @@ extension DateStringParsing on String {
     return DateTime.parse(outputDateFormat.format(dateTime));
   }
 
-  DateTime parseString() {
+  DateTime toDate() {
     List<String> dateParts = split('-');
 
     int year = int.parse(dateParts[0]);
