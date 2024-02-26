@@ -35,4 +35,14 @@ extension MoneyToString on num {
     var milharDotsFormatter = NumberFormat('#,##0.00', 'pt_BR');
     return milharDotsFormatter.format(this);
   }
+
+        String toAbbreviatedString() {
+    if (this >= 1000000) {
+      return 'R\$ ${(this / 1000000)}mi';
+    } else if (this >= 1000) {
+      return 'R\$ ${(this / 1000)}k';
+    } else {
+      return 'R\$ ${this.toStringAsFixed(2).replaceAll('.', ',')}';
+    }
+  }
 }
