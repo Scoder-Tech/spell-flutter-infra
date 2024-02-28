@@ -6,6 +6,8 @@ export 'helper_extensions/string_extensions.dart';
 export 'money/money_extension.dart';
 export 'numbers/num_extension.dart';
 export 'numbers/thousand_dot_separator.dart';
+export 'phone/phone_extension.dart';
+export 'cpf/cpf_extension.dart';
 export 'spacement/padding_extension.dart';
 export 'spacement/responsive.dart';
 export 'spacement/size_config.dart';

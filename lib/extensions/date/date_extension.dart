@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 extension DateParsing on DateTime {
   String dateTimeToString(String outputFormat) {
     DateFormat outputDateFormat = DateFormat(outputFormat);
-    return outputDateFormat.format(this.toLocal());
+    return outputDateFormat.format(toLocal());
   }
 
   String dateTimeToStringUTC(String outputFormat) {
