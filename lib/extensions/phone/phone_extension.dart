@@ -6,7 +6,7 @@ extension PhoneStringParsing on String {
     phone = phone.replaceAll('+55', '');
     phone = phone.replaceAll(RegExp(r'[^0-9]'), '');
 
-    return '%2B55$phone';
+    return '+55$phone';
   }
 
 
@@ -34,7 +34,7 @@ extension PhoneStringNullParsing on String? {
     phone = phone.replaceAll('+55', '');
     phone = phone.replaceAll(RegExp(r'[^0-9]'), '');
 
-    return '%2B55$phone';
+    return '+55$phone';
   }
 
   String? clearPhone() {
