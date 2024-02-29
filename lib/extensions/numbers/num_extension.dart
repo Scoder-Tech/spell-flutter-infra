@@ -21,6 +21,11 @@ extension NumberFormatExtension on num {
     var milharDotsFormatter = NumberFormat('#,##0.00', 'pt_BR');
     return milharDotsFormatter.format(this);
   }
+
+  String formatWithThousandsSeparatorWithoutComma() {
+    var milharDotsFormatter = NumberFormat('#,##0', 'pt_BR');
+    return milharDotsFormatter.format(this);
+  }
 }
 
 extension NumberFormatExtensionNum on num? {
