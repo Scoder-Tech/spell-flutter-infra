@@ -11,11 +11,9 @@ extension DateParsing on DateTime {
     return outputDateFormat.format(this);
   }
 
-  String formatDate(String inputFormat, String outputFormat) {
-    DateFormat inputDateFormat = DateFormat(inputFormat);
-    DateTime dateTime = inputDateFormat.parse(toString());
+  String formatDate(String outputFormat) {
     DateFormat outputDateFormat = DateFormat(outputFormat);
-    return outputDateFormat.format(dateTime);
+    return outputDateFormat.format(this);
   }
 
   DateTime formatDateToDate(String inputFormat, String outputFormat) {
