@@ -12,3 +12,4 @@ export 'spacement/padding_extension.dart';
 export 'spacement/responsive.dart';
 export 'spacement/size_config.dart';
 export 'validators/fields_validators.dart';
+export 'input_formatters/time_input_formatter.dart';
