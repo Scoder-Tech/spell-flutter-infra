@@ -8,7 +8,9 @@ extension ToNumExtension on String {
 
     RegExp regex = RegExp(r'[^0-9.]');
 
-    return num.tryParse(replaceAll(regex, ''));
+    return num.tryParse(
+        replaceAll('.', '').replaceAll(',', '.').replaceAll(regex, '')
+    );
   }
 
   double currencyToNum() {
