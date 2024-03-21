@@ -196,6 +196,18 @@ abstract class Validators {
       return null;
     };
   }
+
+  /// Validar se é uma [cor_hexadecimal]
+  /// Validators.hexColor('Cor inválida')
+  static FormFieldValidator<String> hexColor(String messageKey) {
+    return (value) {
+      if (value?.isEmpty ?? true) return null;
+      var hexColorRegex =
+          RegExp(r'^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$');
+      if (hexColorRegex.hasMatch(value!)) return null;
+      return messageKey;
+    };
+  }
 }
 
 class CpfValidator {
