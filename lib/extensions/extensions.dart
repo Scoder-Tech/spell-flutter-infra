@@ -14,3 +14,4 @@ export 'spacement/size_config.dart';
 export 'validators/fields_validators.dart';
 export 'formatters/date_time_text_formatter.dart';
 export 'input_formatters/time_input_formatter.dart';
+export 'formatters/percentage_formatter.dart';
