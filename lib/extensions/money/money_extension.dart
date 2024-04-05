@@ -3,9 +3,12 @@ import 'package:money2/money2.dart';
 
 extension MoneyToString on num {
   String toBRL() {
+    bool isNegative = this < 0;
+
     var parsedValue = Money.fromNum(this, code: 'BRL').toString();
 
-    String value = parsedValue.substring(2);
+    String value =
+        isNegative ? parsedValue.substring(3) : parsedValue.substring(2);
 
     List<String> parts = value.split(',');
 
@@ -18,7 +21,8 @@ extension MoneyToString on num {
       formattedInteger += integerPart[i];
     }
 
-    String formattedValue = 'R\$' + formattedInteger;
+    String formattedValue =
+        isNegative ? 'R\$ -$formattedInteger' : 'R\$$formattedInteger';
     if (parts.length > 1) {
       formattedValue += ',${parts[1]}';
     }
