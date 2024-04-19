@@ -208,6 +208,23 @@ abstract class Validators {
       return messageKey;
     };
   }
+
+  static FormFieldValidator<String> uniqueValue(
+    List<TextEditingController> controllers,
+    TextEditingController currentController,
+    String messageKey,
+  ) {
+    return (String? value) {
+      for (TextEditingController controller in controllers) {
+        if ((currentController.text == controller.text) &&
+            currentController.text.isNotEmpty &&
+            (currentController != controller)) {
+          return messageKey;
+        }
+      }
+      return null;
+    };
+  }
 }
 
 class CpfValidator {
