@@ -22,6 +22,11 @@ extension DateParsing on DateTime {
     DateFormat outputDateFormat = DateFormat(outputFormat);
     return DateTime.parse(outputDateFormat.format(dateTime));
   }
+
+  String getMonthName() {
+    int monthIndex = month - 1;
+    return monthNamesPt[monthIndex];
+  }
 }
 
 extension DateStringParsing on String {
@@ -47,3 +52,18 @@ extension DateStringParsing on String {
     return DateTime.parse(outputDateFormat.format(dateTime));
   }
 }
+
+List<String> monthNamesPt = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+];
