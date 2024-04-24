@@ -16,7 +16,7 @@ class TimeInputFormatter extends TextInputFormatter {
       var firstHalf = int.parse(unformattedText.substring(0, 2)) > 23
           ? '23'
           : unformattedText.substring(0, 2);
-      var secondHalf = int.parse(unformattedText.substring(2)) > 59
+      var secondHalf = int.parse(unformattedText.substring(2, 4)) > 59
           ? '59'
           : unformattedText.substring(2, 4);
       var thirdHalf = int.parse(unformattedText.substring(4)) > 59
@@ -40,7 +40,7 @@ class TimeInputFormatter extends TextInputFormatter {
       formattedText = int.parse(unformattedText) > 23 ? '23' : unformattedText;
     }
 
-    final int selectionIndex = formattedText.length;
+    int selectionIndex = formattedText.length;
 
     return TextEditingValue(
       text: formattedText,
