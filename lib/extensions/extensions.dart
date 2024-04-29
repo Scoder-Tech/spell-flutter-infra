@@ -15,3 +15,4 @@ export 'spacement/responsive.dart';
 export 'spacement/size_config.dart';
 export 'validators/fields_validators.dart';
 export 'formatters/percentage_formatter.dart';
+export 'map/map_extension.dart';
