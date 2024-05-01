@@ -98,6 +98,22 @@ abstract class Validators {
     };
   }
 
+  /// Validar se o campo é [numerico] e está maior que [max]
+  /// Utilizado em campos com [CurrencyTextInputFormatter]
+  static FormFieldValidator<String> maxValueWithComma(
+      num max, String messageKey) {
+    return (value) {
+      if (value?.isEmpty ?? true) return null;
+      var formated = value?.replaceAll('.', '').replaceAll(',', '.');
+      if (double.tryParse(formated!) != null) {
+        if (double.parse(formated) > max) {
+          return messageKey;
+        }
+      }
+      return null;
+    };
+  }
+
   /// Validar se o campo está entre a quantidade [minima] e [maxima] de caracteres
   /// Validators.between(6, 10, 'Senha deve conter entre 6 e 10 dígitos')
   static FormFieldValidator<String> between(
