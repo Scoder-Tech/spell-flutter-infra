@@ -1,6 +1,6 @@
-name: flutter_infra_scoder
-description: A package for infrastructure to use in flutter projects
-version: 0.0.1
+name: spell_flutter_infra
+description: A package for infrastructure to use in Flutter projects
+version: 1.0.0
 publish_to: "none"
 homepage:
 
