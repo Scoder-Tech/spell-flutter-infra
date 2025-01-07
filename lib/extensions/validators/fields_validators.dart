@@ -179,6 +179,19 @@ abstract class Validators {
     };
   }
 
+  /// Validador para CPF ou CNPJ
+  /// Validators.cpfOrCnpj('Documento inválido')
+  static FormFieldValidator<String> cpfOrCnpj(String messageKey) {
+    return (value) {
+      if (value?.isEmpty ?? true) return null;
+      final sanitizedValue = value!.replaceAll(RegExp(r'[^0-9]'), '');
+      if (sanitizedValue.length == 11) return null;
+      if (sanitizedValue.length == 14) return null;
+
+      return messageKey;
+    };
+  }
+
   /// Validar [varias] regras simultaneas
   /// Validators.multiple([
   ///   Validators.email('E-mail inválido')

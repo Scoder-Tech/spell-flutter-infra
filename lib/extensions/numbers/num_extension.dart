@@ -1,20 +1,20 @@
 import 'package:intl/intl.dart';
 
-extension ToNumExtension on String {
-  num? toNum() {
-    if (this == '') {
-      return null;
-    }
+extension NumToString on num? {
+  String? toStringBRL() {
+    if (this == null) return null;
 
-    RegExp regex = RegExp(r'[^0-9.]');
-
-    return num.tryParse(
-        replaceAll('.', '').replaceAll(',', '.').replaceAll(regex, '')
-    );
+    return this!.toStringAsFixed(2).replaceAll('.', ',');
   }
 
-  double currencyToNum() {
-    return double.parse(replaceAll('B\$ ', '').replaceAll(',', ''));
+  String? toStringCurrencyBRL({
+    String newPattern = '#,##0.00'
+  }) {
+    if (this == null) return null;
+
+    var dotsFormatter = NumberFormat(newPattern, 'pt_BR');
+
+    return dotsFormatter.format(this);
   }
 }
 
@@ -30,14 +30,20 @@ extension NumberFormatExtension on num {
   }
 }
 
-extension NumberFormatExtensionNum on num? {
-  String formatWithThousandsSeparator() {
-    var milharDotsFormatter = NumberFormat('#,##0.00', 'pt_BR');
-    return milharDotsFormatter.format(this);
+extension ToNumExtension on String {
+  num? toNum() {
+    if (this == '') {
+      return null;
+    }
+
+    RegExp regex = RegExp(r'[^0-9.]');
+
+    return num.tryParse(
+        replaceAll('.', '').replaceAll(',', '.').replaceAll(regex, '')
+    );
   }
 
-  String formatWithThousandsSeparatorWithoutComma() {
-    var milharDotsFormatter = NumberFormat('#,##0', 'pt_BR');
-    return milharDotsFormatter.format(this);
+  double currencyToNum() {
+    return double.parse(replaceAll('B\$ ', '').replaceAll(',', ''));
   }
 }

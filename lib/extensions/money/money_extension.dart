@@ -5,7 +5,7 @@ extension MoneyToString on num {
   String toBRL() {
     bool isNegative = this < 0;
 
-    var parsedValue = Money.fromNum(this, code: 'BRL').toString();
+    var parsedValue = Money.fromNum(this, isoCode: 'BRL').toString();
 
     String value =
         isNegative ? parsedValue.substring(3) : parsedValue.substring(2);

@@ -20,6 +20,7 @@ extension FutureExtension on Future<Response> {
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${response.requestOptions.uri.toString()}'
         '|| [METHOD] : ${response.requestOptions.method}'
+        '|| [DATA] : ${response.data}'
         '|| [QUERY PARAMETRS] : ${response.requestOptions.queryParameters}'
         '|| [DATA] : ${response.requestOptions.data}',
       );
@@ -32,6 +33,8 @@ extension FutureExtension on Future<Response> {
         '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
         '|| [WHERE] : ${e.requestOptions.uri.toString()}'
         '|| [METHOD] : ${e.requestOptions.method}'
+        '|| [MESSAGE] : ${e.message}'
+        '|| [RESPONSE] : ${e.response}'
         '|| [QUERY PARAMETRS] : ${e.requestOptions.queryParameters}'
         '|| [DATA] : ${e.requestOptions.data}',
       );
@@ -62,9 +65,10 @@ extension FutureExtension on Future<Response> {
       logger.e(
         '[ERROR] ${res.errors}'
         '|| [ERROR TYPE] : Failure.dioFailure'
-        '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
+        '|| [FUTURE METHOD] : Future<Result<R>> resultString<R>'
         '|| [WHERE] : ${response.requestOptions.uri.toString()}'
         '|| [METHOD] : ${response.requestOptions.method}'
+        '|| [DATA] : ${response.data}'
         '|| [QUERY PARAMETRS] : ${response.requestOptions.queryParameters}'
         '|| [DATA] : ${response.requestOptions.data}',
       );
@@ -74,9 +78,11 @@ extension FutureExtension on Future<Response> {
       logger.e(
         '[ERROR] ${e.toString()}'
         '|| [ERROR TYPE] : Failure.dioFailure'
-        '|| [FUTURE METHOD] : Future<Result<R>> result<R>'
+        '|| [FUTURE METHOD] : Future<Result<R>> resultString<R>'
         '|| [WHERE] : ${e.requestOptions.uri.toString()}'
         '|| [METHOD] : ${e.requestOptions.method}'
+        '|| [MESSAGE] : ${e.message}'
+        '|| [RESPONSE] : ${e.response}'
         '|| [QUERY PARAMETRS] : ${e.requestOptions.queryParameters}'
         '|| [DATA] : ${e.requestOptions.data}',
       );
