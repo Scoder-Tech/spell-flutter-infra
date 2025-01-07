@@ -17,7 +17,7 @@ dependencies:
   localization: ^2.1.0
   flutter_i18n: ^0.35.0
   intl: ^0.19.0
-  money2: ^4.0.0
+  money2: ^5.3.0
 
 dev_dependencies:
   flutter_test:
